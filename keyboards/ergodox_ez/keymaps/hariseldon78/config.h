@@ -15,4 +15,10 @@
 #define MOUSEKEY_WHEEL_MAX 				1
 
 #undef MOUSEKEY_INTERVAL
-#define MOUSEKEY_INTERVAL       		50
+#define MOUSEKEY_INTERVAL       		40
+
+#undef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX    		60
+
+#undef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED      		10
