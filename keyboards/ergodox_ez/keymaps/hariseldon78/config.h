@@ -18,7 +18,10 @@
 #define MOUSEKEY_INTERVAL       		40
 
 #undef MOUSEKEY_TIME_TO_MAX
-#define MOUSEKEY_TIME_TO_MAX    		60
+#define MOUSEKEY_TIME_TO_MAX    		40
 
 #undef MOUSEKEY_MAX_SPEED
-#define MOUSEKEY_MAX_SPEED      		10
+#define MOUSEKEY_MAX_SPEED      		20
+
+#undef TAPPING_TERM
+#define TAPPING_TERM    				150
