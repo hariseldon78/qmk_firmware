@@ -23,5 +23,7 @@
 #undef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED      		20
 
+// 150 seems too much
+// 125 too low
 #undef TAPPING_TERM
-#define TAPPING_TERM    				150
+#define TAPPING_TERM					135
