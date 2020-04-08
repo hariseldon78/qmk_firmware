@@ -19,19 +19,25 @@ enum custom_keycodes {
   RGB_SLD = SAFE_RANGE,
 };
 
-// CAUTION: FOR SOME REASON CAPSLOCK AND LCTRL GOT SWAPPED
-// SAME THING FOR ESCAPE AND TILDE
+// CAUTION: FOR SOME REASON CAPSLOCK AND LCTRL *KEYCODES* GOT SWAPPED
+// SAME THING FOR ESCAPE AND GRAVE-TILDE. USE THE NEXT DEFINES TO FIX IT
+
+#define REAL_ESCAPE   KC_GRAVE
+#define REAL_GRAVE    KC_ESCAPE
+#define REAL_CAPSLOCK KC_LCTRL
+#define REAL_LCTRL    KC_CAPSLOCK
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
-    KC_GRAVE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                 KC_PSCREEN,     KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPACE,
-    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_BSLASH,                                      KC_ESCAPE,       KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_SLASH,
-     KC_LCTRL,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_ENTER,
-    KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_SCROLLLOCK,                                 KC_QUOTE,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_MINUS,       KC_RSHIFT,
-     KC_CAPSLOCK,   LSFT(KC_LALT),  MO(2),          KC_LALT,        LT(1,KC_SPACE),                                                                                                 MO(1),          MO(2),          KC_LBRACKET,    KC_EQUAL,       KC_RBRACKET,
-                                                                                                    RALT_T(KC_ENTER),KC_BSPACE,      KC_TRANSPARENT, KC_INSERT,
-                                                                                                                    KC_TRANSPARENT, RGUI(0),
-                                                                                    LGUI(0),        TT(1),          MO(3),          KC_RALT, KC_DELETE,      KC_SPACE
+    REAL_ESCAPE,    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                   KC_PSCREEN,     KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPACE,
+    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_BSLASH,                                        REAL_GRAVE,     KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_SLASH,
+    REAL_ESCAPE,    KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                             KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_ENTER,
+    KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_SCROLLLOCK,                                    KC_QUOTE,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_MINUS,       KC_RSHIFT,
+    REAL_LCTRL,     MO(2),          MO(1),          KC_LALT,        KC_SPACE,                                                                                                         MO(1),          MO(2),          KC_LBRACKET,    KC_EQUAL,       KC_RBRACKET,
+                                                                                                    RALT_T(KC_ENTER),KC_BSPACE,       KC_TRANSPARENT, KC_INSERT,
+                                                                                                                     MO(3),           RGUI(0),
+                                                                                    LGUI(0),        TT(1),           REAL_CAPSLOCK,   KC_RALT,        KC_DELETE,      KC_SPACE
   ),
   [1] = LAYOUT_ergodox_pretty(
     TG(4),          KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_DELETE,

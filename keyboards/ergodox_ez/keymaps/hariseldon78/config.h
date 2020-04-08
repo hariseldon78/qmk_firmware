@@ -26,4 +26,4 @@
 // 150 seems too much
 // 125 too low
 #undef TAPPING_TERM
-#define TAPPING_TERM				135
+#define TAPPING_TERM				140
