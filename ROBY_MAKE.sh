@@ -1,4 +1,4 @@
-#moved moved !/bin/bash
+#!/bin/bash
 set -e
 make ergodox_ez:hariseldon78
 sudo ~/packages/teensygui/teensy
