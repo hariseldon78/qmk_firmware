@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-//#define USE_MATRIX_I2C
+#define USE_MATRIX_I2C
 
 /* Select hand configuration */
 
@@ -32,20 +32,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define TAPPING_TERM 100
 
 #ifdef RGBLIGHT_ENABLE
-    #define RGBLIGHT_EFFECT_BREATHING
-    #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-    #define RGBLIGHT_EFFECT_SNAKE
-    #define RGBLIGHT_EFFECT_KNIGHT
-    #define RGBLIGHT_EFFECT_CHRISTMAS
-    #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-    #define RGBLIGHT_EFFECT_RGB_TEST
-    #define RGBLIGHT_EFFECT_ALTERNATING
-    #define RGBLIGHT_EFFECT_TWINKLE
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
+#    define RGBLIGHT_EFFECT_BREATHING
+#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
+#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#    define RGBLIGHT_EFFECT_SNAKE
+#    define RGBLIGHT_EFFECT_KNIGHT
+#    define RGBLIGHT_EFFECT_CHRISTMAS
+#    define RGBLIGHT_EFFECT_STATIC_GRADIENT
+#    define RGBLIGHT_EFFECT_RGB_TEST
+#    define RGBLIGHT_EFFECT_ALTERNATING
+#    define RGBLIGHT_EFFECT_TWINKLE
+#    define RGBLIGHT_LIMIT_VAL 120
+#    define RGBLIGHT_HUE_STEP 10
+#    define RGBLIGHT_SAT_STEP 17
+#    define RGBLIGHT_VAL_STEP 17
 #endif
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 1
+#define MOUSEKEY_WHEEL_MAX_SPEED 1
+#define MOUSEKEY_WHEEL_DELTA 2
+#define MOUSEKEY_WHEEL_MAX 1
+#define MOUSEKEY_INTERVAL 40
+#define MOUSEKEY_TIME_TO_MAX 50
+#define MOUSEKEY_MAX_SPEED 30
+
+#define TAPPING_TERM 100
