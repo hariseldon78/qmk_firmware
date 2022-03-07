@@ -21,11 +21,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "caps_word.h"
 
 enum custom_keycodes {
-    IN_PAREN,
+    IN_PAREN = SAFE_RANGE,
     IN_CURLY,
     IN_BRACK,
     IN_ANGLE,
+    IN_QOSIN,
+    IN_QODOU,
+    IN_QOREV,
     ARROW_FU,
+    DEL_BSPC,
+    NL_INDNT,
 };
 
 /* THIS FILE WAS GENERATED!
@@ -39,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[0] = LAYOUT_split
                                                               [2] = LAYOUT_split_3x6_3(KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_SLCK, KC_INS, KC_UP, KC_NO, KC_PGUP, KC_DEL, KC_TRNS, KC_NO, KC_LCTL, KC_LALT, KC_LSFT, KC_NO, KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PSCR, KC_HOME, KC_NO, KC_END, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
                                                               [3] = LAYOUT_split_3x6_3(KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_DEL, KC_TRNS, KC_F11, LCTL_T(KC_F12), KC_LALT, KC_LSFT, KC_NO, KC_NO, KC_RSFT, KC_LALT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
                                                               [4] = LAYOUT_split_3x6_3(LCTL(KC_TAB), RCS(KC_TAB), KC_BTN2, KC_MS_U, KC_BTN1, KC_BTN3, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_VOLU, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN4, KC_NO, KC_RSFT, KC_LALT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_VOLD, KC_LEFT, KC_NO, KC_RGHT, LCTL(KC_W), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-                                                              [5] = LAYOUT_split_3x6_3(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, IN_PAREN, IN_PAREN, KC_NO, KC_NO, KC_NO, KC_NO, IN_CURLY, IN_CURLY, KC_NO, KC_NO, KC_NO, KC_NO, IN_BRACK, IN_BRACK, KC_NO, KC_NO, KC_NO, KC_NO, IN_ANGLE, IN_ANGLE, KC_NO, KC_NO, KC_NO, ARROW_FU, KC_NO, KC_NO, KC_NO, KC_NO)};
+                                                              [5] = LAYOUT_split_3x6_3(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, DEL_BSPC, KC_NO, KC_NO, IN_PAREN, IN_PAREN, IN_QODOU, IN_QOSIN, KC_NO, KC_NO, IN_CURLY, IN_CURLY, KC_NO, NL_INDNT, KC_NO, KC_NO, IN_BRACK, IN_BRACK, KC_NO, IN_QOREV, KC_NO, KC_NO, IN_ANGLE, IN_ANGLE, KC_NO, KC_NO, KC_NO, ARROW_FU, KC_NO, KC_NO, KC_NO, KC_NO)};
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -153,52 +158,94 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         set_keylog(keycode, record);
     }
 #endif  // OLED_ENABLE
-    switch (keycode) {
-        case IN_PAREN:
-            SEND_STRING("()");
-            tap_code16(KC_LEFT);
-            return false;
-        case IN_CURLY:
-            SEND_STRING("{}");
-            tap_code16(KC_LEFT);
-            return false;
-        case IN_BRACK:
-            SEND_STRING("[]");
-            tap_code16(KC_LEFT);
-            return false;
-        case IN_ANGLE:
-            SEND_STRING("<>");
-            tap_code16(KC_LEFT);
-            return false;
-        case ARROW_FU:
-            SEND_STRING("==>");
-            return false;
+    if (record->event.pressed) {
+        switch (keycode) {
+            case IN_PAREN:
+                SEND_STRING("()");
+                tap_code16(KC_LEFT);
+                return false;
+            case IN_CURLY:
+                SEND_STRING("{}");
+                tap_code16(KC_LEFT);
+                return false;
+            case IN_BRACK:
+                SEND_STRING("[]");
+                tap_code16(KC_LEFT);
+                return false;
+            case IN_ANGLE:
+                SEND_STRING("<>");
+                tap_code16(KC_LEFT);
+                return false;
+            case ARROW_FU:
+                SEND_STRING("=>");
+                return false;
+            case IN_QOSIN:
+                SEND_STRING("''");
+                tap_code16(KC_LEFT);
+                return false;
+            case IN_QODOU:
+                SEND_STRING("\"\"");
+                tap_code16(KC_LEFT);
+                return false;
+            case IN_QOREV:
+                SEND_STRING("``");
+                tap_code16(KC_LEFT);
+                return false;
+            case DEL_BSPC:
+                tap_code16(KC_DEL);
+                tap_code16(KC_BSPC);
+                return false;
+            case NL_INDNT:
+                tap_code16(KC_ENT);
+                tap_code16(KC_ENT);
+                tap_code16(KC_UP);
+                tap_code16(KC_TAB);
+                return false;
 
-        case LCTL_T(KC_LPRN):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_LPRN);
-                return false;
-            }
-            break;
-        case LALT_T(KC_RPRN):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_RPRN);
-                return false;
-            }
-            break;
-        case LCTL_T(KC_RCBR):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_RCBR);
-                return false;
-            }
-            break;
+            case LT(5, KC_COLN):
+                if (record->tap.count) {
+                    tap_code16(KC_COLN);
+                    return false;
+                }
+                break;
+            case RSFT_T(KC_DLR):
+                if (record->tap.count) {
+                    tap_code16(KC_DLR);
+                    return false;
+                }
+                break;
+            case LSFT_T(KC_AT):
+                if (record->tap.count) {
+                    tap_code16(KC_AT);
+                    return false;
+                }
+                break;
+            case LCTL_T(KC_LPRN):
+                if (record->tap.count) {
+                    tap_code16(KC_LPRN);
+                    return false;
+                }
+                break;
+            case LALT_T(KC_RPRN):
+                if (record->tap.count) {
+                    tap_code16(KC_RPRN);
+                    return false;
+                }
+                break;
+            case LCTL_T(KC_RCBR):
+                if (record->tap.count) {
+                    tap_code16(KC_RCBR);
+                    return false;
+                }
+                break;
 
-        case LALT_T(KC_LCBR):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_LCBR);
-                return false;
-            }
-            break;
+            case LALT_T(KC_LCBR):
+                if (record->tap.count) {
+                    tap_code16(KC_LCBR);
+                    return false;
+                }
+                break;
+        }
     }
     return true;
 }
