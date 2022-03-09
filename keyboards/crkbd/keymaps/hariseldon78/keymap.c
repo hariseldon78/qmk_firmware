@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[0] = LAYOUT_split
                                                               [1] = LAYOUT_split_3x6_3(KC_TRNS, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_DEL, LCTL(KC_G), KC_HASH, LCTL_T(KC_LPRN), LALT_T(KC_RPRN), LSFT_T(KC_AT), KC_PLUS, KC_TILD, RSFT_T(KC_DLR), LALT_T(KC_LCBR), LCTL_T(KC_RCBR), KC_AMPR, KC_TRNS, KC_TRNS, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR, KC_GRV, KC_UNDS, KC_EXLM, KC_LT, KC_GT, KC_BSLS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_TRNS),
                                                               [2] = LAYOUT_split_3x6_3(KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_SLCK, KC_INS, KC_UP, KC_NO, KC_PGUP, KC_DEL, KC_TRNS, KC_NO, KC_LCTL, KC_LALT, KC_LSFT, KC_NO, KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PSCR, KC_HOME, KC_NO, KC_END, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
                                                               [3] = LAYOUT_split_3x6_3(KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_DEL, KC_TRNS, KC_F11, LCTL_T(KC_F12), KC_LALT, KC_LSFT, KC_NO, KC_NO, KC_RSFT, KC_LALT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-                                                              [4] = LAYOUT_split_3x6_3(LCTL(KC_TAB), RCS(KC_TAB), KC_BTN2, KC_MS_U, KC_BTN1, KC_BTN3, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_VOLU, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN4, KC_NO, KC_RSFT, KC_LALT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_VOLD, KC_LEFT, KC_NO, KC_RGHT, LCTL(KC_W), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+                                                              [4] = LAYOUT_split_3x6_3(LCTL(KC_TAB), RCS(KC_TAB), KC_BTN2, KC_MS_U, KC_BTN1, KC_WH_U, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_BTN4, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_NO, KC_RSFT, KC_LALT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_BTN5, KC_LEFT, KC_BTN3, KC_RGHT, LCTL(KC_W), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
                                                               [5] = LAYOUT_split_3x6_3(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, DEL_BSPC, KC_NO, KC_NO, IN_PAREN, IN_PAREN, IN_QODOU, IN_QOSIN, KC_NO, KC_NO, IN_CURLY, IN_CURLY, KC_NO, NL_INDNT, KC_NO, KC_NO, IN_BRACK, IN_BRACK, KC_NO, IN_QOREV, KC_NO, KC_NO, IN_ANGLE, IN_ANGLE, KC_NO, KC_NO, KC_NO, ARROW_FU, KC_NO, KC_NO, KC_NO, KC_NO)};
 
 #ifdef OLED_ENABLE
@@ -91,20 +91,20 @@ char keylog_str[24] = {};
 
 const char code_to_name[60] = {' ', ' ', ' ', ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'R', 'E', 'B', 'T', '_', '-', '=', '[', ']', '\\', '#', ';', '\'', '`', ',', '.', '/', ' ', ' ', ' '};
 
-void set_keylog(uint16_t keycode, keyrecord_t *record) {
-    char name = ' ';
-    if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) || (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) {
-        keycode = keycode & 0xFF;
-    }
-    if (keycode < 60) {
-        name = code_to_name[keycode];
-    }
+/* void set_keylog(uint16_t keycode, keyrecord_t *record) { */
+/*     char name = ' '; */
+/*     if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) || (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) { */
+/*         keycode = keycode & 0xFF; */
+/*     } */
+/*     if (keycode < 60) { */
+/*         name = code_to_name[keycode]; */
+/*     } */
 
-    // update keylog
-    snprintf(keylog_str, sizeof(keylog_str), "%dx%d, k%2d : %c", record->event.key.row, record->event.key.col, keycode, name);
-}
+/*     // update keylog */
+/*     snprintf(keylog_str, sizeof(keylog_str), "%dx%d, k%2d : %c", record->event.key.row, record->event.key.col, keycode, name); */
+/* } */
 
-void oled_render_keylog(void) { oled_write(keylog_str, false); }
+/* void oled_render_keylog(void) { oled_write(keylog_str, false); } */
 
 void render_bootmagic_status(bool status) {
     /* Show Ctrl-Gui Swap options */
@@ -141,7 +141,7 @@ void oled_render_logo(void) {
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
-        oled_render_keylog();
+        /* oled_render_keylog(); */
     } else {
         oled_render_logo();
     }
@@ -153,11 +153,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_caps_word(keycode, record)) {
         return false;
     }
-#ifdef OLED_ENABLE
-    if (record->event.pressed) {
-        set_keylog(keycode, record);
-    }
-#endif  // OLED_ENABLE
+/* #ifdef OLED_ENABLE */
+/*     if (record->event.pressed) { */
+/*         set_keylog(keycode, record); */
+/*     } */
+/* #endif  // OLED_ENABLE */
     if (record->event.pressed) {
         switch (keycode) {
             case IN_PAREN:
