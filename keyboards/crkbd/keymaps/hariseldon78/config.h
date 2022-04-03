@@ -98,3 +98,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IGNORE_MOD_TAP_INTERRUPT 1
 
 #define CAPS_WORD_IDLE_TIMEOUT 5000
+#define LEADER_TIMEOUT 250
+#define LEADER_PER_KEY_TIMING

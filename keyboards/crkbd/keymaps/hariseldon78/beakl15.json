@@ -43,7 +43,7 @@
       "KC_P",
       "KC_V",
       "TG(2)",
-      "LCTL(KC_B)",
+      "ANY(KC_LEAD)",
       "KC_MINS",
       "LGUI_T(KC_EQL)",
       "LT(5,KC_COLN)",
