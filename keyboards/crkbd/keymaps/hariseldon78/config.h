@@ -86,13 +86,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 1
-#define MOUSEKEY_WHEEL_MAX_SPEED 1
-#define MOUSEKEY_WHEEL_DELTA 2
-#define MOUSEKEY_WHEEL_MAX 1
+#define MOUSEKEY_WHEEL_MAX_SPEED 3
+#define MOUSEKEY_WHEEL_DELAY 3
+#define MOUSEKEY_WHEEL_INTERVAL 30
 #define MOUSEKEY_DELAY 2
 #define MOUSEKEY_INTERVAL 20
 #define MOUSEKEY_TIME_TO_MAX 20
-#define MOUSEKEY_MAX_SPEED 20
+#define MOUSEKEY_MAX_SPEED 16
 
 #define TAPPING_TERM 160
 #define IGNORE_MOD_TAP_INTERRUPT 1
