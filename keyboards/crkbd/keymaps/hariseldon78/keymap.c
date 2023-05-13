@@ -41,7 +41,13 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [0] = LAYOUT_split_3x6_3(KC_TAB, KC_Q, KC_H, KC_O, KC_U, KC_X, KC_G, KC_C, KC_R, KC_F, KC_Z, KC_BSPC, LT(3, KC_ESC), KC_Y, LCTL_T(KC_I), LALT_T(KC_E), LSFT_T(KC_A), KC_QUOT, KC_D, RSFT_T(KC_S), LALT_T(KC_T), LCTL_T(KC_N), KC_B, KC_ENT, TG(4), KC_J, KC_SLSH, KC_DOT, KC_COMM, KC_K, KC_W, KC_M, KC_L, KC_P, KC_V, TG(8), KC_LEAD, KC_MINS, LGUI_T(KC_EQL), LT(5, KC_COLN), LT(1, KC_SPC), LT(2, KC_SCLN)),
+    [0] = LAYOUT_split_3x6_3
+    (
+     KC_TAB,        KC_Q,      KC_H,          KC_O,          KC_U,         KC_X,                KC_G,     KC_C,          KC_R,          KC_F,          KC_Z,      KC_BSPC,
+     LT(3, KC_ESC), KC_Y,      LCTL_T(KC_I),  LALT_T(KC_E),  LSFT_T(KC_A), KC_QUOT,             KC_D,     RSFT_T(KC_S),  LALT_T(KC_T),  LCTL_T(KC_N),  KC_B,      KC_ENT,
+     TG(4),         KC_J,      KC_SLSH,       KC_DOT,        KC_COMM,      KC_K,                KC_W,     KC_M,          KC_L,          KC_P,          KC_V,      TG(8),
+     /*                                           */KC_LEAD, KC_MINS, LGUI_T(KC_EQL),      LT(5, KC_COLN),  LT(1, KC_SPC), LT(2, KC_SCLN)),
+
     [1] = LAYOUT_split_3x6_3(KC_TRNS, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_DEL, LCTL(KC_G), KC_HASH, LCTL_T(KC_LPRN), LALT_T(KC_RPRN), LSFT_T(KC_AT), KC_PLUS, KC_TILD, RSFT_T(KC_DLR), LALT_T(KC_LCBR), LCTL_T(KC_RCBR), KC_AMPR, KC_TRNS, KC_TRNS, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR, KC_GRV, KC_UNDS, KC_EXLM, KC_LT, KC_GT, KC_BSLS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_TRNS),
     [2] = LAYOUT_split_3x6_3(KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_SCRL, KC_INS, KC_UP, KC_NO, KC_PGUP, KC_DEL, KC_TRNS, KC_NO, KC_LCTL, KC_LALT, KC_LSFT, KC_NO, KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PSCR, KC_HOME, KC_NO, KC_END, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
     [3] = LAYOUT_split_3x6_3(KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_DEL, KC_TRNS, KC_F11, LCTL_T(KC_F12), KC_LALT, KC_LSFT, KC_NO, KC_NO, KC_RSFT, KC_LALT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
