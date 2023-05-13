@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#define USE_MATRIX_I2C
 
 /* Select hand configuration */
 
@@ -26,29 +26,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-#define QUICK_TAP_TERM 0
-#define TAPPING_TERM 100
+// #define TAPPING_FORCE_HOLD
+// #define TAPPING_TERM 100
 
-#undef RGBLED_NUM
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_KNIGHT
-#define RGBLIGHT_EFFECT_CHRISTMAS
-#define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#define RGBLIGHT_EFFECT_RGB_TEST
-#define RGBLIGHT_EFFECT_ALTERNATING
-#define RGBLIGHT_EFFECT_TWINKLE
-#define RGBLED_NUM 27
-#define RGBLIGHT_LIMIT_VAL 120
-#define RGBLIGHT_HUE_STEP 10
-#define RGBLIGHT_SAT_STEP 17
-#define RGBLIGHT_VAL_STEP 17
+/* ws2812 RGB LED */
+#define RGB_DI_PIN D3
 
-// Underglow
-/*
-#undef RGBLED_NUM
-#define RGBLED_NUM 14    // Number of LEDs
-#define RGBLIGHT_SLEEP
-*/
+#define DIODE_DIRECTION COL2ROW
+
+#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 1
+#define MOUSEKEY_WHEEL_MAX_SPEED 3
+#define MOUSEKEY_WHEEL_DELAY 3
+#define MOUSEKEY_WHEEL_INTERVAL 30
+#define MOUSEKEY_DELAY 2
+#define MOUSEKEY_INTERVAL 20
+#define MOUSEKEY_TIME_TO_MAX 20
+#define MOUSEKEY_MAX_SPEED 16
+
+#define TAPPING_TERM 160
+#define IGNORE_MOD_TAP_INTERRUPT 1
+
+#define CAPS_WORD_IDLE_TIMEOUT 5000
+#define LEADER_TIMEOUT 250
+#define LEADER_PER_KEY_TIMING
