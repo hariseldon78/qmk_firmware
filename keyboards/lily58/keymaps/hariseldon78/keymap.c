@@ -16,6 +16,7 @@ enum custom_keycodes {
     PYTH_ARR,
     UUUUUP,
     DDDDDWN,
+
 };
 
 enum layer_number {
@@ -41,7 +42,9 @@ enum layer_number {
 
 #define EQL_GUI LGUI_T(KC_EQL)
 #define CLN_MCR LT(_MACRO, KC_COLN)
+#define LEAD_MCR LT(_MACRO, QK_LEAD)
 #define SPC_SYM LT(_SYMBOL, KC_SPC)
+#define MINS_SYM LT(_SYMBOL, KC_MINS)
 #define SCLN_ARR LT(_ARROWS, KC_SCLN)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -56,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|ScrlLck|    |ScrlLck|------+------+------+------+------+------|
      * |MOUSE |   J  |  /?  |   .  |   ,  |   K  |-------|    |-------|   W  |   M  |   L  |   P  |   V  |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *                   |      |      |  -   | /   =   /       \  :   \  |Space |  ;   |      |
+     *                   |      |      |  -   | /   =   /       \  :   \  |Space |  ;   |  ;   |
      *                   |      |      |      |/       /         \      \ |      |      |      |
      *                   `----------------------------'           '------''--------------------'
      */
@@ -71,13 +74,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         MOUSE, KC_J, KC_SLSH, KC_DOT, KC_COMM, KC_K, KC_SCRL, /*----*/ KC_SCRL, KC_W, KC_M, KC_L, KC_P, KC_V, _______,
 
-        /*-------------*/ _______, QK_LEAD, KC_MINS, EQL_GUI, /*----*/ CLN_MCR, SPC_SYM, SCLN_ARR, _______),
+        /*-----------*/ QK_LEAD, LEAD_MCR, MINS_SYM, EQL_GUI, /*----*/ CLN_MCR, SPC_SYM, SCLN_ARR, SCLN_ARR),
 
     [_SYMBOL] = LAYOUT(
 
         /*---------------------*/ _______, _______, _______, _______, _______, _______, /*--------------------------------*/ _______, _______, _______, _______, _______, KC_DEL,
 
-        /*---------------------*/ _______, _______, _______, _______, _______, _______, /*--------------------------------*/ _______, _______, _______, _______, _______, KC_DEL,
+        /*------------*/ _______, _______, LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), _______, /*--------------------------------*/ _______, _______, _______, _______, _______, KC_DEL,
 
         LCTL(KC_G), KC_HASH, LCTL_T(KC_LPRN), LALT_T(KC_RPRN), LSFT_T(KC_AT), KC_PLUS, /*---------------------------------*/ KC_TILD, RSFT_T(KC_DLR), LALT_T(KC_LCBR), LCTL_T(KC_RCBR), KC_AMPR, _______,
 
@@ -241,9 +244,7 @@ bool oled_task_user(void) {
 #endif // OLED_ENABLE
 
 void leader_end_user(void) {
-    if (leader_sequence_two_keys(KC_M, KC_S)) {
-        SEND_STRING("f@linguenheld.fr");
-    } else if (leader_sequence_two_keys(KC_M, KC_L)) {
+    if (leader_sequence_two_keys(KC_M, KC_L)) {
         SEND_STRING("hariseldon78@gmail.com");
     } else if (leader_sequence_two_keys(KC_H, KC_7)) {
         SEND_STRING("hariseldon78");
@@ -262,11 +263,11 @@ void leader_end_user(void) {
     }
 
     /* Fractions */
-    else if (leader_sequence_three_keys(KC_F, KC_C, KC_T)) {
+    else if (leader_sequence_three_keys(KC_F, KC_1, KC_4)) {
         send_unicode_string("¼");
-    } else if (leader_sequence_three_keys(KC_F, KC_C, KC_G)) {
+    } else if (leader_sequence_three_keys(KC_F, KC_1, KC_2)) {
         send_unicode_string("½");
-    } else if (leader_sequence_three_keys(KC_F, KC_H, KC_T)) {
+    } else if (leader_sequence_three_keys(KC_F, KC_3, KC_4)) {
         send_unicode_string("¾");
     }
 
@@ -442,45 +443,45 @@ void leader_end_user(void) {
     }
 
     /* Subscript / superscript */
-    else if (leader_sequence_three_keys(KC_U, KC_P, KC_F)) {
+    else if (leader_sequence_three_keys(KC_U, KC_P, KC_0)) {
         send_unicode_string("⁰");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_F)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_0)) {
         send_unicode_string("₀");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_C)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_1)) {
         send_unicode_string("¹");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_C)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_1)) {
         send_unicode_string("₁");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_G)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_2)) {
         send_unicode_string("²");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_G)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_2)) {
         send_unicode_string("₂");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_H)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_3)) {
         send_unicode_string("³");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_H)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_3)) {
         send_unicode_string("₃");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_T)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_4)) {
         send_unicode_string("⁴");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_T)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_4)) {
         send_unicode_string("₄");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_S)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_5)) {
         send_unicode_string("⁵");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_S)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_5)) {
         send_unicode_string("₅");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_R)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_6)) {
         send_unicode_string("⁶");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_R)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_6)) {
         send_unicode_string("₆");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_P)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_7)) {
         send_unicode_string("⁷");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_P)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_7)) {
         send_unicode_string("₇");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_D)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_8)) {
         send_unicode_string("⁸");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_D)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_8)) {
         send_unicode_string("₈");
-    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_L)) {
+    } else if (leader_sequence_three_keys(KC_U, KC_P, KC_9)) {
         send_unicode_string("⁹");
-    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_L)) {
+    } else if (leader_sequence_three_keys(KC_D, KC_N, KC_9)) {
         send_unicode_string("₉");
     };
 }
